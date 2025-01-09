@@ -35,12 +35,12 @@
 
 ## 미션 팀원
 <table align="left">
-  <th align="center">김찬희(94)</th>
-  <th align="center">김영훈(95)</th>
-  <th align="center">김지훈(95)</th>
-  <th align="center">권기현(95)</th>
-  <th align="center">심규보(95)</th>
-  <th align="center">김경섭(98)</th>
-  <th align="center">이지원(98)</th>
-  <th align="center">이승재(99)</th>
+  <th align="center">김찬희</th>
+  <th align="center">김영훈</th>
+  <th align="center">김지훈</th>
+  <th align="center">권기현</th>
+  <th align="center">심규보</th>
+  <th align="center">김경섭</th>
+  <th align="center">이지원</th>
+  <th align="center">이승재</th>
 </table>
