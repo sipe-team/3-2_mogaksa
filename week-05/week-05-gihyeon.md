@@ -1,6 +1,6 @@
 ### 진행 내용
 - 에셋 컬러 변경 프로그램 0.1.0 버전 배포 (MacOS DMG 파일)
-- Link : https://github.com/Gyeony95/color_changer/releases/tag/0.1.0
+- Link : https://github.com/Gyeony95/color_changer/releases
 
 ### 문제 및 해결과정
 - 회의 화요일인줄 알고있다가 급하게 마무리;;
@@ -12,7 +12,7 @@
 
 ## 자료
 ### 0. 메인 화면
-<img width="600" alt="Image" src="https://github.com/user-attachments/assets/38b30a45-483d-4b40-9bb6-cb15db7ac36d" />
+<img width="600" alt="Image" src="https://github.com/user-attachments/assets/6bbe5ade-df10-4c84-bea6-6b02cfcf82b0" />
 
 ### 1-1. 이미지 색상 변경 기능 (첨부 전)
 <img width="600" alt="Image" src="https://github.com/user-attachments/assets/e3d9cf05-3b7d-495f-8ca8-2b11b8551cfc" />
