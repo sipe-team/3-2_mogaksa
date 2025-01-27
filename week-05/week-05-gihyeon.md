@@ -1,0 +1,45 @@
+### 진행 내용
+- 에셋 컬러 변경 프로그램 0.1.0 버전 배포 (MacOS DMG 파일)
+- Link : https://github.com/Gyeony95/color_changer/releases/tag/0.1.0
+
+### 문제 및 해결과정
+- 회의 화요일인줄 알고있다가 급하게 마무리;;
+- 기존에 기획했던 두가지 프로젝트중 하나만 마무리 해야했고 나머지 하나의 프로젝트는 설 연휴동안 해보긴 할건데 발표 자료에는 못넣을수도 있음
+
+### 다음 계획
+- 두번째 프로젝트 진행해보기
+
+
+## 자료
+### 0. 메인 화면
+<img width="600" alt="Image" src="https://github.com/user-attachments/assets/38b30a45-483d-4b40-9bb6-cb15db7ac36d" />
+
+### 1-1. 이미지 색상 변경 기능 (첨부 전)
+<img width="600" alt="Image" src="https://github.com/user-attachments/assets/e3d9cf05-3b7d-495f-8ca8-2b11b8551cfc" />
+
+### 1-2. 이미지 색상 변경 기능 (첨부 후)
+<img width="600" alt="Image" src="https://github.com/user-attachments/assets/6d493ed5-02b8-49f0-b279-57a82ee13f07" />
+
+### 1-3. 컬러 변경
+<img width="600" alt="Image" src="https://github.com/user-attachments/assets/885d707e-4342-4183-bec5-45e04d0be46f" />
+
+### 1-4. 컬러 변경
+<img width="600" alt="Image" src="https://github.com/user-attachments/assets/1fba89af-96ce-436a-9f4a-b7a32d66f886" />
+
+### 2-1. 배경 그라데이션 변경 (첨부 전)
+<img width="600" alt="Image" src="https://github.com/user-attachments/assets/9f8bbdab-ae27-4b04-bf7f-c8fa4d5ecd6b" />
+
+### 2-2. 배경 그라데이션 변경 (첨부 후)
+<img width="600" alt="Image" src="https://github.com/user-attachments/assets/40bb67b0-92b6-47e1-b84f-a77369d6bdc3" />
+
+### 2-3. 배경 그라데이션 변경 후
+<img width="600" alt="Image" src="https://github.com/user-attachments/assets/86633b33-979a-43a4-864e-22a92a6b2e9c" />
+
+### 3-1. 일괄 색상 변경 (첨부 전)
+<img width="600" alt="Image" src="https://github.com/user-attachments/assets/d4f3a574-a75f-4bfd-ac13-01223e12363b" />
+
+### 3-2. 일괄 색상 변경 (첨부 후, 색상 지정 후)
+<img width="600" alt="Image" src="https://github.com/user-attachments/assets/34a358d3-ec21-4bbe-af3c-752ebd5d1be5" />
+
+### 3-3. 다운로드 하고 압축 해제 결과
+<img width="600" alt="Image" src="https://github.com/user-attachments/assets/f80aadce-f6f1-465b-86dd-921137e527c9" />
