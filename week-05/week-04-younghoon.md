@@ -63,10 +63,10 @@ lambda 에서 boto3 이용해 s3 sdk 사용하면 아주 간단하다.
             })
         }
 ```
-뭐 대충 이런식이다.. 
-
 generate_presigned_url 메소드 사용하고 결과값을 return 해주면 끝
+코드는 참 쉽다
 
+하지만 S3와 LAMBDA 모두 '권한설정'이 골치아프다. 
 
 ### AI가 쉽지만은 않더라..
 
