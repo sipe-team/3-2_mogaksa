@@ -27,9 +27,10 @@
 
 사이프톤에서 우재선생님에게 배운 layered architecture를 적용해보기위해 코드 전체구조는 아니지만 infrastruture layer의 SQS Provider 작성과 member 도메인에서 호출하는 것 까지 작성해보는중
 infrastructure layer에 어디에 위치시켜야하는지?
-interface로 작성해야할지?
-구현체는 어디에?
+interface로 작성해야할지? 구현체는 어디에?
 머리가 아프다
+
+
 ![image](https://github.com/user-attachments/assets/91777a32-4e9d-47a5-a969-adeebcff44a7)
 
 일단은 Invitatin 이라는 도메인 밑에 infrastructure layer 에다가 event infra를 따로 만들고 주고받을 클라이언트 정보의 dto와 함께 provider를 만들어놓았다..
