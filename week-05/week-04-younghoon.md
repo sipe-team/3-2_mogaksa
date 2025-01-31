@@ -3,21 +3,24 @@
 
 서비스 규모가 너무 커졌고.. 나는 감당할 수 없는 상황이 되었다...
 
+그래서 돈이라도 벌어왔다..
+
 ## 목표 
 
 커진 규모에 맞게 주어진 태스크들이 늘어나면서 AI를 '실험' 하려했던 나는 AI를 실제 비즈니스에 '적용' 해야되는 책임감을 떠안았다..
 1. AI sdk를 활용해 사용하는 labmda에 SQS를 붙혔으니 SQS를 호출하는 backend 로직을 내가 담당해보자
 2. 클라이언트의 이미지를 저장할 이미지스토리지를 생각못했다. S3로 만들되 s3 url이 노출되지 않게 lambda에서 presigned url을 생성해주는 로직을 만들자.
 3. prompt 엔지니어링을 통해서 스코어링 기준과 input/output을 backend 서버가 알아들을 수 있게 고정시키자!
-4. 서비스 안정싱이 최우선! 
+4. 서비스 안정싱이 최우선!
+5. 크레딧 헌팅 
 
 ## 결과
 
 ### 서버의 안정성
 
-1. fargate활용 - 과금됨, 뒤지게느림
-2. node활용 - 프리티어커버되는 선에서 t4g.micro로 생성(1코어 1GB램), 메모리 수시로 터짐
-3. fargate로 회귀 - 과금은 크레딧으로 해결하자
+1. fargate활용 - 0.25 cpu, 512MB RAM 배포 170초, 과금됨 뒤지게느림 서버 죽은적은 없음..
+2. node활용 - 1 cpu, 1 GB RAM, 배포 30초, 과금안됨 프리티어커버되는 선에서 t4g.micro로 생성(1코어 1GB램) 롤링 배포시 메모리 수시로 터짐
+3. fargate로 회귀 - 1 cpu, 1GM RAM, 배포 70초 과금됨 하지만... 크레딧으로 해결해볼까?
 
 결국 크레딧 헌팅으로 $225 의 크레딧을 얻었고 현재 과금상황을 보아선 한 6개월은 커버될 것으로 보인다..
 
@@ -40,10 +43,91 @@ interface로 작성해야할지? 구현체는 어디에?
 
 이건 뭐 간단했다.
 
+lambda 에서 boto3 이용해 s3 sdk 사용하면 아주 간단하다.
+```
+        presigned_url = s3_client.generate_presigned_url(
+            'put_object',
+            Params={
+                'Bucket': bucket_name,
+                'Key': filename
+            },
+            ExpiresIn=expiration,
+            HttpMethod='PUT'
+        )
+        
+        # 생성된 presigned_url을 API 응답으로 반환
+        return {
+            "statusCode": 200,
+            "body": json.dumps({
+                "presigned_url": presigned_url
+            })
+        }
+```
+뭐 대충 이런식이다.. 
+
+generate_presigned_url 메소드 사용하고 결과값을 return 해주면 끝
+
+
 ### AI가 쉽지만은 않더라..
 
-ai 너무 만만하게 보았다. prompt에서 깔짝대는 것과 서버가 sdk로 호출해 원하는 답을 나오게 만드는 법 그리고 그 대답이 얼마나 정확성이 높은지 스코어링하는 것 
+AI를 너무 만만하게 보았다. prompt에서 대화 서술형으로 깔짝대는 것과 서버가 sdk로 호출해 원하는 답을 나오게 만드는 법 그리고 그 대답이 얼마나 정확성이 높은지 스코어링하는 것 
 모두 힘들다.. 죽을 것 같다..
+
+prompt 엔지니어링이라는게 무엇인지 이 과정을 통해서 제대로 배웠다. 
+
+'그거 그냥 말만 잘하면 되는거아니야?'
+
+'응 아니야.'
+
+예를 들어 이런식이다.
+
+```
+System instructor: You are a professional matchmaker who make lover man and woman
+
+Input Example : 
+
+{
+  "gender" : "male"
+  "age" : int
+  "name" : string
+  "idealType":{
+    "ageRange": {"min": int, "max": int}
+    "mbti: str
+    ...
+  }
+ ....
+}
+
+If I give you Input like this you have to answer output like this
+
+Output Example :
+{
+  "gender" : "female"
+  "age" : int
+  ....
+}
+
+If I giva you input data which has "gender" value "male". you have to answer "female" data which is best 
+
+```
+AI에게 너가 무슨일을 해야할 지 알려주고
+
+어떤 input을 줄것이며 어떤 output을 내야할 지 알려줘야한다
+
+이게 참 쉽지않다 
+
+하지만 bedrock 에서 제공하는 knowledge base를 사용하면 
+
+bedrock sdk에서 프롬프트 엔지니어링을 위한 사전 input form을 정의 할 수 있다.!
+
+
+```
+'promptTemplate': {
+  'textPromptTemplate': 'string'
+}
+```
+
+여기에 써주면 된다..
 
 ## 결론
 
